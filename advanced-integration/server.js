@@ -10,6 +10,7 @@ app.use(express.static("public"));
 // render checkout page with client id & unique client token
 app.get("/", async (req, res) => {
   const clientId = process.env.CLIENT_ID, merchantId = process.env.MERCHANT_ID;
+  console.log(clientId);
   try {
     const clientToken = await paypal.generateClientToken();
     res.render("checkout", { clientId, clientToken, merchantId });
